@@ -1,0 +1,10 @@
+packages:
+  - apps/**/*
+  - packages/*
+allowBuilds:
+  '@parcel/watcher': false
+  '@swc/core': true
+  esbuild: true
+  unrs-resolver: false
+minimumReleaseAgeExclude:
+  - '@types/node@22.20.2'

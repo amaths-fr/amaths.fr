@@ -1,0 +1,60 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import IconCard from "../IconCard.astro";
+---
+
+<section id="method">
+  <Container>
+    <SectionHead>
+      <h3>Notre Réponse</h3>
+      <p>
+        Notre approche s'inspire des méthodes de classes préparatoires : <br />rigueur, régularité, progression
+        structurée.
+      </p>
+    </SectionHead>
+    <div class="cards">
+      <IconCard
+        variant="contrasted"
+        icon="book"
+        title="Séances structurées de 2h"
+        description="Chaque session suit une progression claire : rappel, exercices types, approfondissement. Comme en prépa, mais adapté au niveau lycée."
+      />
+      <IconCard
+        variant="contrasted"
+        icon="user-group"
+        title="Petits groupes (4 élèves max)"
+        description="Un équilibre parfait entre dynamique de groupe et attention personnalisée. Chaque élève progresse à son rythme."
+      />
+      <IconCard
+        variant="contrasted"
+        icon="calendar"
+        title="Stages intensifs"
+        description="Pendant chaque période de vacances scolaires, un stage en groupe d'une trentaine d'heure pour consolider ou se préparer aux examens."
+      />
+      <IconCard
+        variant="contrasted"
+        icon="text-bubble"
+        title="Retours personnalisés"
+        description="Après chaque session, un compte-rendu détaillé est envoyé aux parents avec les points d'amélioration et les progrès constatés."
+      />
+    </div>
+  </Container>
+</section>
+
+<style>
+  section {
+    background: var(--section-gradient-2);
+  }
+
+  .cards {
+    padding-top: var(--s64);
+    display: grid;
+    grid-template-columns: var(--grid-opti-4);
+    grid-gap: var(--s32);
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+</style>

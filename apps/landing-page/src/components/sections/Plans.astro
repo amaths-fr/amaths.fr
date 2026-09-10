@@ -1,0 +1,95 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import PricingCard from "../PricingCard.astro";
+import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
+
+const commonAdvantages = ["2h de cours par semaine", "Groupe de niveau", "Accès fiches et exercices", "Stage vacances de 30h"];
+
+const plans = [
+  {
+    title: "Seconde",
+    subtitle: "Bases solides pour le lycée",
+    price: "210",
+    advantages: commonAdvantages,
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Seconde`,
+  },
+  {
+    title: "Première",
+    subtitle: "Consolider pour la terminale",
+    price: "222",
+    advantages: commonAdvantages,
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Terminale`,
+  },
+  {
+    title: "Terminale",
+    subtitle: "Préparation intensive au bac",
+    price: "240",
+    advantages: commonAdvantages,
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Terminale`,
+  },
+  {
+    title: "Prépa 1",
+    subtitle: "MPSI / PCSI / PTSI",
+    price: "288",
+    advantages: [...commonAdvantages, "Corrections personnalisées", "Colles individuelles"],
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+1%C3%A8re+ann%C3%A9e+%28MPSI%2C+PCSI%2C+ECG...%29`,
+  },
+  {
+    title: "Prépa 2",
+    subtitle: "MP / PC / PSI",
+    price: "258",
+    advantages: [...commonAdvantages, "Annales écoles ciblées", "Colles individuelles"],
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+2%C3%A8me+ann%C3%A9e+%28MP%2C+PC%2C+PSI%2C+ECG...%29`,
+  },
+]
+---
+
+<section id="plans">
+  <Container>
+    <SectionHead>
+      <h2>Des formules adaptées <span class="light">à chaque niveau</span></h2>
+      <p>
+        Engagement sans durée minimum. Résiliable à tout moment. <br />Premier cours d'essai gratuit et sans
+        engagement.
+      </p>
+    </SectionHead>
+    <div class="plans">
+      {plans.map((plan) => <PricingCard {...plan} />)}
+    </div>
+  </Container>
+</section>
+
+<style>
+  .light {
+    color: var(--primary-color-light);
+  }
+
+  p {
+    font-size: 1.2rem;
+  }
+
+  section {
+    background: var(--section-gradient-2);
+  }
+
+  .plans {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    padding-top: var(--s64);
+    gap: var(--s24);
+  }
+
+  @media (max-width: 950px) {
+    .plans {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 700px) {
+    .plans {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

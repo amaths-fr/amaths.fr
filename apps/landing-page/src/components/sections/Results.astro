@@ -1,0 +1,87 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import Callout from "../Callout.astro";
+import Stat from "../Stat.astro";
+import TestimonyCard from "../TestimonyCard.astro";
+
+const testimonies = [
+  {
+    name: "Hugues Dor",
+    grade: "Prépa ECG (2ᵉ année)",
+    image: "/assets/hugues-dor.jpeg",
+    video: "https://www.youtube.com/embed/2neoOQ-XlPc?rel=0",
+    before: "9.0",
+    after: "17.0",
+    quote: "J'ai eu 9 au bac et maintenant je suis à 17 de moyenne en prépa.",
+  },
+  {
+    name: "Jonas Grelet",
+    grade: "Prépa ECG (2ᵉ année)",
+    image: "/assets/jonas-grelet.png",
+    video: "https://www.youtube.com/embed/WyiZlfNeijM?rel=0",
+    before: "8.0",
+    after: "15.0",
+    quote: "Il m'a expliqué et en 30 secondes j'ai compris alors que mon prof a pris 2 heures et je n'y suis pas arrivé.",
+  },
+  {
+    name: "Guilhem Mouiller",
+    grade: "Prépa ECG (2ᵉ année)",
+    image: "/assets/guilhem-mouiller.png",
+    video: "https://www.youtube.com/embed/L18TafDBvSA?rel=0",
+    before: "3.0",
+    after: "10.0",
+    quote: "Amaths, ça rend meilleur que les autres",
+  },
+  {
+    name: "Clotilde Montin",
+    grade: "Prépa ECG (2ᵉ année)",
+    image: "/assets/clotilde-montin.png",
+    video: "https://www.youtube.com/embed/VTqeRRtrPK4?rel=0",
+    before: "9.0",
+    after: "14.0",
+    quote: "Grâce aux fiches, j'ai toute la méthode simplifiée",
+  },
+];
+---
+
+<section id="results">
+  <Container>
+    <SectionHead>
+      <div class="center">
+        <Callout variant="accent-translucid">Résultats prouvés</Callout>
+      </div>
+      <h2>Nos élèves progressent <span class="light">vraiment</span></h2>
+      <div class="center">
+        <Stat size="l" icon="stonks" value="+4.6" label="points de moyenne" />
+      </div>
+    </SectionHead>
+    <div class="testimonies">
+      {testimonies.map((testimony) => <TestimonyCard {...testimony} />)}
+    </div>
+  </Container>
+</section>
+
+<style>
+  .center {
+    display: flex;
+    justify-content: center;
+  }
+
+  .light {
+    color: var(--primary-color-light);
+  }
+
+  .testimonies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s32);
+    padding-top: var(--s32);
+  }
+
+  @media (max-width: 800px) {
+    .testimonies {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

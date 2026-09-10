@@ -1,0 +1,98 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+
+interface Props {
+  title: string;
+  subtitle: string;
+  price: string;
+  advantages: string[];
+  ctaHref: string;
+}
+
+const { title, subtitle, price, advantages, ctaHref } = Astro.props;
+---
+
+<div class="container">
+  <div class="header">
+    <h4>{title}</h4>
+    <p>{subtitle}</p>
+  </div>
+  <div class="price">{price}€<span class="ht"> TTC/mois</span></div>
+  <div class="advantages">
+    {
+      advantages.map((advantage) => (
+        <div class="advantage">
+          <Icon name="check" />
+          <p>{advantage}</p>
+        </div>
+      ))
+    }
+  </div>
+  <a href={ctaHref} target="_blank">
+    <Button size="m" variant="primary">Cours d'essai</Button>
+  </a>
+</div>
+
+<style>
+  .price {
+    font-weight: var(--weight-black);
+    font-size: 3rem;
+  }
+
+  .ht {
+    font-weight: 400;
+    font-size: 1.2rem;
+    color: var(--primary-color-tern);
+  }
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s8);
+  }
+
+  .container {
+    padding: var(--s32);
+    background: var(--absolute-white);
+    border: 2px solid var(--elevation-2);
+    border-radius: var(--r8);
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s24);
+    justify-content: space-between;
+  }
+
+  .container:hover {
+    border: 2px solid var(--primary-color);
+    transform: scale(1.05);
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  .header p {
+    font-size: 0.875rem;
+    color: var(--primary-color-tern);
+  }
+
+  .advantages {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
+  }
+
+  .advantage {
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    gap: var(--s8);
+  }
+
+  .advantage p {
+    color: var(--primary-color-tern);
+    font-size: 0.875rem;
+  }
+</style>

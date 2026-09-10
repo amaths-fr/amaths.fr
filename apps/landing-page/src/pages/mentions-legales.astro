@@ -1,0 +1,113 @@
+---
+import Container from "../components/Container.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="AMATHS - Mentions légales">
+  <section>
+    <Container>
+      <div class="content">
+        <h1>Mentions légales</h1>
+
+        <h2>Éditeur du site</h2>
+        <p>
+          Amaths, Société par actions simplifiée (SASU)
+          <br />
+          <b>Capital social</b> : 100 €<br />
+          <b>Siège social</b> : 60 rue François 1er, 75008 Paris
+          <br />
+          <b>RCS</b> : Paris 990 825 002
+          <br />
+          <b>Numéro SIRET</b> : 990 825 002
+          <br />
+          <b>TVA intracommunautaire</b> : FR 34990825002
+        </p>
+
+        <h2>Directeur de la publication</h2>
+        <p>Arthur Gorin, Président</p>
+
+        <h2>Contact</h2>
+        <p>
+          <b>Email</b> : contact@amaths.fr
+        </p>
+
+        <h2>Hébergement</h2>
+        <p>
+          OVH cloud
+          <br />
+          2 rue Kellermann, 59100 Roubaix, France
+          <br />
+          <b>Téléphone</b> : 1007
+        </p>
+
+        <h2>Données personnelles</h2>
+        <p>
+          Les données personnelles collectées sur le site Amaths (formulaire de
+          contact, inscription, etc.) sont utilisées uniquement dans le cadre de
+          la relation commerciale et pédagogique avec les élèves et leurs
+          représentants légaux.
+        </p>
+        <p>Les données collectées peuvent inclure :</p>
+        <ul>
+          <li>nom, prénom</li>
+          <li>adresse email</li>
+          <li>numéro de téléphone</li>
+          <li>informations scolaires</li>
+        </ul>
+        <p>
+          Ces données sont conservées pendant une durée strictement nécessaire à
+          la gestion de la relation client.
+        </p>
+        <p>
+          Conformément au Règlement Général sur la Protection des Données, vous
+          disposez des droits suivants :
+        </p>
+        <ul>
+          <li>droit d'accès</li>
+          <li>droit de rectification</li>
+          <li>droit de suppression</li>
+        </ul>
+        <p>Vous pouvez exercer ces droits en contactant : contact@amaths.fr</p>
+
+        <h2>Cookies</h2>
+        <p>
+          Le site Amaths peut utiliser des cookies afin d'améliorer l'expérience
+          utilisateur et mesurer l'audience.
+        </p>
+        <p>
+          Vous avez la possibilité d'accepter ou de refuser les cookies à tout
+          moment via le bandeau prévu à cet effet.
+        </p>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  section {
+    padding-top: var(--header-height);
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: var(--s32);
+    margin-top: var(--s48);
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--s24);
+    margin-top: var(--s32);
+  }
+
+  h3 {
+    font-size: 1.25rem;
+    margin-bottom: var(--s16);
+    margin-top: var(--s24);
+  }
+
+  p,
+  ul {
+    margin-bottom: var(--s8);
+  }
+</style>

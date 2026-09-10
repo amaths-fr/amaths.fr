@@ -1,0 +1,37 @@
+---
+interface Props {
+  variant: "primary" | "accent" | "primary-translucid" | "accent-translucid";
+}
+
+const { variant } = Astro.props;
+---
+
+<div class:list={["callout", variant]}>
+  <slot />
+</div>
+
+<style>
+  .callout {
+    padding: var(--s8) var(--s16);
+    width: fit-content;
+    border-radius: var(--r24);
+    font-size: 0.9rem;
+  }
+
+  .callout.primary {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+  }
+
+  .callout.accent {
+    background-color: var(--accent-color);
+  }
+
+  .callout.primary-translucid {
+    background-color: var(--translucid-1);
+  }
+
+  .callout.accent-translucid {
+    background: var(--accent-color-tern);
+  }
+</style>

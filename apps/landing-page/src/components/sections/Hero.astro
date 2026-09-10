@@ -1,0 +1,146 @@
+---
+import Container from "../Container.astro";
+import Button from "../Button.astro";
+import Callout from "../Callout.astro";
+import Stat from "../Stat.astro";
+import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
+---
+
+<section id="hero">
+  <Container>
+    <div class="callout">
+      <Callout variant="primary-translucid">
+        Excellence académique depuis 2020
+      </Callout>
+    </div>
+    <div class="hero-content">
+      <div class="text-cta">
+        <h2>Ma-thématique de soutien à 13€ de l'heure</h2>
+        <p>
+          Un cours de 2 heures par semaine et l'accès à un stage d'une trentaine
+          d'heures lors des périodes de vacances scolaires. Distanciel ou
+          Présentiel sur Nantes.
+        </p>
+        <div class="cta">
+          <a href={AIRTABLE_FORM_BASE_URL} target="_blank">
+            <Button size="m" variant="accent" icon="arrow-right">
+              Réserver un cours d'essai
+            </Button>
+          </a>
+          <a href="#plans">
+            <Button size="m" variant="secondary">
+              Voir les formules
+            </Button>
+          </a>
+        </div>
+      </div>
+      <div class="image">
+        <img src="assets/hero.jpeg" alt="Hero image" />
+      </div>
+    </div>
+    <div class="stats">
+      <Stat size="l" value="+4.6" label="points de moyenne" />
+      <Stat size="l" value="4 élèves" label="maximum par groupe" />
+      <Stat size="l" value="13€" label="de l'heure en moyenne" />
+    </div>
+  </Container>
+</section>
+
+<style>
+  section {
+    background: var(--section-gradient-1);
+    position: relative;
+    padding-bottom: var(--s96);
+    padding-top: calc(var(--header-height) + var(--s48));
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+  }
+
+  .hero-content {
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    gap: var(--s64);
+  }
+
+  .text-cta {
+    max-width: 700px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    gap: var(--s32);
+  }
+
+  .image {
+    flex: 0 0 600px;
+    overflow: hidden;
+    position: relative;
+    border-radius: var(--s24);
+  }
+
+  img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta {
+    display: flex;
+    gap: var(--s16);
+  }
+
+  .stats {
+    margin-top: var(--s64);
+    gap: var(--s128);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .callout {
+    margin-bottom: var(--s32);
+  }
+
+  @media (max-width: 1150px) {
+    .hero-content {
+      flex-direction: column;
+      gap: var(--s48);
+    }
+
+    .text-cta {
+      max-width: none;
+    }
+
+    .image {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 815px) {
+    .stats {
+      flex-direction: column;
+      gap: var(--s64);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .cta {
+      flex-direction: column;
+    }
+
+    .hero-content {
+      gap: var(--s32);
+    }
+  }
+</style>

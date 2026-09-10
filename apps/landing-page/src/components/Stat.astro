@@ -1,0 +1,80 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  size: "l" | "m";
+  value: string;
+  label: string;
+  icon?: string;
+  boxedIcon?: boolean;
+}
+
+const { size, value, label, icon, boxedIcon } = Astro.props;
+---
+
+<div class="stat">
+  {
+    boxedIcon && icon && (
+      <div class="boxed-icon">
+        <Icon name={icon} />
+      </div>
+    )
+  }
+  <div class="data-wrapper">
+    {
+      icon && !boxedIcon && (
+        <p class="icon">
+          <Icon name={icon} />
+        </p>
+      )
+    }
+    <p class:list={["data", size]}>{value}</p>
+  </div>
+  <p class="label">{label}</p>
+</div>
+
+<style>
+  .stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .data-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: var(--s8);
+  }
+
+  .icon {
+    font-size: 2rem;
+    color: var(--accent-color);
+  }
+
+  .data {
+    font-family: Open Sans, sans-serif;
+    font-weight: 700;
+  }
+
+  .data.l {
+    font-size: 3rem;
+  }
+
+  .data.m {
+    font-size: 2rem;
+  }
+
+  .label {
+    color: var(--primary-color-tern);
+  }
+
+  .boxed-icon {
+    background-color: var(--elevation-2);
+    padding: var(--s16);
+    border-radius: var(--r8);
+    font-size: 2rem;
+    color: var(--primary-color);
+    line-height: 0;
+    margin-bottom: var(--s12);
+  }
+</style>

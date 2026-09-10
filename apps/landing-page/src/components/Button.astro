@@ -1,0 +1,110 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  size?: "s" | "m" | "l";
+  variant?: "accent" | "secondary" | "primary" | "glassy";
+  icon?: string;
+  class?: string;
+}
+
+const sizeMap = {
+  l: 24,
+  m: 16,
+  s: 8,
+} satisfies Record<NonNullable<Props["size"]>, number>;
+
+const { size = "m", variant = "primary", icon, class: className } = Astro.props;
+---
+
+<button class:list={[size, variant, className]}>
+  <slot />
+  {icon && (
+    <span class="right-icon">
+      <Icon name={icon} size={sizeMap[size]} />
+    </span>
+  )}
+</button>
+
+<style>
+  button {
+    font-family:
+      Open Sans,
+      sans-serif;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    color: #fff;
+    padding: var(--s8) var(--s24);
+    border-radius: var(--r8);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s8);
+  }
+
+  .right-icon {
+    transition: transform 0.3s ease;
+    line-height: 0;
+  }
+
+  button:hover .right-icon {
+    transform: translate(var(--s8));
+  }
+
+  .s {
+    font-size: 1rem;
+  }
+
+  .m {
+    font-size: 1rem;
+    padding: var(--s16) var(--s32);
+  }
+
+  .l {
+    font-size: 1.125rem;
+    font-weight: var(--weight-semi-bold);
+    padding: var(--s24) var(--s32);
+  }
+
+  .accent {
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-weight: var(--weight-medium);
+    border: 2px solid var(--accent-color);
+  }
+
+  .secondary {
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-weight: var(--weight-medium);
+    background-color: transparent;
+  }
+
+  .primary {
+    border: 2px solid var(--primary-color);
+    background-color: var(--primary-color);
+    color: var(--absolute-white);
+    font-weight: var(--weight-medium);
+  }
+
+  .glassy {
+    background-color: #ffffff1a;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: var(--absolute-white);
+  }
+
+  .secondary:hover {
+    background-color: var(--translucid-1);
+  }
+
+  .glassy:hover {
+    background-color: #fff3;
+  }
+
+  .accent:hover,
+  .primary:hover {
+    opacity: 0.8;
+  }
+</style>

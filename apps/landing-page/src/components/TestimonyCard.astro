@@ -1,0 +1,140 @@
+---
+import Callout from "./Callout.astro";
+
+interface Props {
+  name: string;
+  grade: string;
+  image: string;
+  video: string;
+  before: string;
+  after: string;
+  quote: string;
+}
+
+const { name, grade, image, video, before, after, quote } = Astro.props;
+---
+
+<div class="container">
+  <div class="profile">
+    <img src={image} alt={name} />
+    <div class="data">
+      <p class="name">{name}</p>
+      <p class="grade">{grade}</p>
+    </div>
+  </div>
+  <div class="video">
+    <iframe
+      src={video}
+      allowfullscreen
+      scrolling="no"
+      allow="accelerometer *; clipboard-write *; encrypted-media *; gyroscope *; picture-in-picture *; web-share *;"
+      referrerpolicy="strict-origin"></iframe>
+  </div>
+  <div class="evolution">
+    <div class="note-group">
+      <Callout variant="accent">Avant</Callout>
+      <div class="note before">{before}</div>
+    </div>
+    <div class="progress"></div>
+    <div class="note-group">
+      <Callout variant="primary">Après</Callout>
+      <div class="note after">{after}</div>
+    </div>
+  </div>
+  <p class="quote">“ {quote} ”</p>
+</div>
+
+<style>
+  .container {
+    border-radius: var(--r8);
+    background: var(--elevation-1);
+    border: 1px solid var(--elevation-2);
+    padding: var(--s32);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s24);
+  }
+
+  .name {
+    font-weight: var(--weight-medium);
+  }
+
+  .grade {
+    font-size: 0.875rem;
+    color: var(--primary-color-tern);
+  }
+
+  .profile {
+    display: flex;
+    gap: var(--s16);
+    align-items: center;
+  }
+
+  .evolution {
+    display: flex;
+    padding: var(--s16);
+    border-radius: var(--r8);
+    background: var(--absolute-white);
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--s16);
+  }
+
+  .note-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s8);
+  }
+
+  .note {
+    font-size: 2rem;
+    font-weight: var(--weight-semi-bold);
+  }
+
+  .before {
+    color: var(--accent-color);
+  }
+
+  .after {
+    color: var(--primary-color);
+  }
+
+  .progress {
+    background: linear-gradient(90deg, #ebbe364d, #5466b780);
+    flex: 1;
+    height: var(--s8);
+    border-radius: var(--r24);
+  }
+
+  .quote {
+    font-style: italic;
+  }
+
+  img {
+    border-radius: var(--rmax);
+    height: var(--s64);
+    aspect-ratio: 1;
+    object-fit: cover;
+  }
+
+  .video {
+    left: 0;
+    width: 100%;
+    height: 0;
+    position: relative;
+    padding-bottom: 56.25%;
+    border-radius: var(--r8);
+    overflow: hidden;
+  }
+
+  iframe {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border: 0;
+  }
+</style>

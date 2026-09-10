@@ -1,0 +1,202 @@
+---
+import { Icon } from "astro-icon/components";
+import Container from "./Container.astro";
+---
+
+<footer>
+  <Container>
+    <div class="options">
+      <div class="category manifest">
+        <img src="/assets/amaths.svg" alt="amaths" />
+        <p>Excellence académique en mathématiques. Méthode structurée inspirée des CPGE.</p>
+      </div>
+      <div class="category contacts">
+        <h5>Contact</h5>
+        <div class="linklist">
+          <div class="icon-link">
+            <Icon name="mail" class="icon" />
+            <a class="basic" href="mailto:contact@amaths.fr">contact@amaths.fr</a>
+          </div>
+          <div class="icon-link">
+            <Icon name="phone" class="icon" />
+            <a class="basic" href="tel:+33631918680">06 31 91 86 80</a>
+          </div>
+          <div class="icon-link-grid">
+            <Icon name="marker" class="icon" />
+            <div class="address-title">Présentiel</div>
+            <div></div>
+            <div class="address-content">
+              15 boulevard Gabriel Lauriol<br />
+              Nantes 44000
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="category quickly">
+        <h5>Liens rapides</h5>
+        <div class="linklist">
+          <a class="basic" href="/#method">Notre méthode</a>
+          <a class="basic" href="/#results">Témoignages</a>
+          <a class="basic" href="/#plans">Formules et tarifs</a>
+        </div>
+      </div>
+      <div class="category legal">
+        <h5>Légal</h5>
+        <div class="linklist">
+          <a class="basic" href="/mentions-legales">Mentions légales</a>
+          <a class="basic" href="/confidentialite">Politique de confidentialité</a>
+          <a class="basic" href="/cgv">CGV</a>
+        </div>
+      </div>
+    </div>
+    <div class="credit">
+      <p>© 2026 Amaths. Tous droits réservés.</p>
+      <div class="icon-buttons">
+        <a href="https://www.instagram.com/amaths.fr/" target="_blank">
+          <div class="icon-button"><Icon name="instagram" /></div>
+        </a>
+        <a href="https://www.linkedin.com/company/amaths/" target="_blank">
+          <div class="icon-button"><Icon name="linkedin" /></div>
+        </a>
+      </div>
+    </div>
+  </Container>
+</footer>
+
+<style>
+  img {
+    max-width: 100px;
+  }
+
+  footer {
+    background-color: var(--primary-color);
+    padding-top: var(--s64);
+    padding-bottom: var(--s64);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    color: var(--absolute-white);
+    grid-column-gap: var(--s48);
+    grid-row-gap: var(--s64);
+    font-size: 1rem;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s24);
+  }
+
+  h5 {
+    font-size: 1.125rem;
+    font-family: var(--font-default);
+    font-weight: var(--weight-medium);
+  }
+
+  h4 {
+    font-size: 1.5rem;
+  }
+
+  a.basic {
+    color: var(--absolute-white);
+    opacity: 0.7;
+    width: fit-content;
+  }
+
+  a.basic:hover {
+    opacity: 1;
+  }
+
+  p {
+    color: var(--absolute-white);
+    opacity: 0.7;
+  }
+
+  h4.amaths {
+    margin: 0;
+  }
+
+  .linklist {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s12);
+  }
+
+  .credit {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.875rem;
+    margin-top: var(--s48);
+    padding-top: var(--s24);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s16);
+  }
+
+  .icon-link {
+    display: flex;
+    align-items: center;
+    gap: var(--s8);
+  }
+
+  .icon {
+    opacity: 0.7;
+  }
+
+  .icon-link-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: var(--s8);
+    align-items: center;
+  }
+
+  .address-title {
+    font-weight: var(--weight-medium);
+  }
+
+  .address-content {
+    opacity: 0.7;
+  }
+
+  .icon-buttons {
+    display: flex;
+    gap: var(--s16);
+  }
+
+  .icon-button {
+    font-size: var(--s24);
+    color: #fff;
+    align-items: center;
+    background: #ffffff1a;
+    padding: var(--s8);
+    border-radius: 50%;
+    line-height: 0;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .icon-button:hover {
+    color: var(--primary-color);
+    background: var(--accent-color);
+  }
+
+  @media (max-width: 750px) {
+    .options {
+      grid-template-columns: 1fr;
+    }
+
+    .credit {
+      flex-direction: column;
+    }
+
+    .manifest {
+      text-align: center;
+      align-items: center;
+    }
+  }
+</style>

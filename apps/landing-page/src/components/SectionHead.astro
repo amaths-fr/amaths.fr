@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="section-head">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .section-head {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s16);
+    max-width: 800px;
+    text-align: center;
+  }
+</style>

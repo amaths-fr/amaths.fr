@@ -1,0 +1,67 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import IconCard from "../IconCard.astro";
+---
+
+<section id="difficulties">
+  <Container>
+    <SectionHead>
+      <h3>Vos difficultés</h3>
+      <p>
+        La plupart des élèves en difficulté en mathématiques ne manquent pas d'intelligence, mais d'une méthode
+        structurée et d'un accompagnement régulier.
+      </p>
+    </SectionHead>
+    <div class="cards">
+      <IconCard
+        icon="brain"
+        title="Manque de méthode"
+        description="Vos enfants accumulent les formules sans comprendre la logique profonde. Résultat : blocage total face à un exercice nouveau."
+      />
+      <IconCard
+        icon="downfall"
+        title="Perte de confiance"
+        description="Chaque contrôle renforce le sentiment d'incompétence. La spirale négative s'installe et les maths deviennent une source d'angoisse."
+      />
+      <IconCard
+        icon="clock"
+        title="Travail irrégulier"
+        description="Sans structure claire et suivi régulier, le travail personnel est inefficace. Les lacunes s'accumulent et deviennent insurmontables."
+      />
+      <IconCard
+        icon="warn"
+        title="Pression des examens"
+        description="Bac, concours post-prépa : les échéances arrivent vite. Sans préparation rigoureuse, le stress paralyse la performance."
+      />
+    </div>
+  </Container>
+</section>
+
+<style>
+  p {
+    font-size: 1.2rem;
+    color: var(--primary-color-tern);
+  }
+
+  .intro-wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s16);
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .cards {
+    padding-top: var(--s64);
+    display: grid;
+    grid-template-columns: var(--grid-opti-4);
+    grid-gap: var(--s32);
+  }
+</style>

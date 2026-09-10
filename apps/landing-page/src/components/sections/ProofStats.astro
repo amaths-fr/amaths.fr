@@ -1,0 +1,78 @@
+---
+import Container from "../Container.astro";
+import Stat from "../Stat.astro";
+---
+
+<section>
+  <Container>
+    <div class="container">
+      <div class="stats">
+        <Stat size="m" boxedIcon icon="user-group" value="4 élèves" label="max par groupe" />
+        <Stat size="m" boxedIcon icon="certificate" value="10 ans" label="d'expérience CPGE" />
+        <Stat size="m" boxedIcon icon="target" value="+4.6" label="points de moyenne" />
+        <Stat size="m" boxedIcon icon="book" value="2000+" label="heures de cours données" />
+      </div>
+      <div class="box">
+        <h3>Une pédagogie inspirée des <span class="accent">Classes Préparatoires</span></h3>
+        <p>
+          Nos enseignants sont tous issus de CPGE (Grandes Écoles d'ingénieurs, ENS). Ils connaissent les exigences
+          académiques et savent transmettre la rigueur nécessaire pour exceller en mathématiques.
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s64);
+  }
+
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-row-gap: var(--s64);
+  }
+
+  .box {
+    display: flex;
+    padding: var(--s48);
+    background: var(--primary-color);
+    border-radius: var(--s16);
+    flex-direction: column;
+    align-items: center;
+    gap: var(--s16);
+  }
+
+  h3 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--absolute-white);
+  }
+
+  p {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--absolute-white);
+    opacity: 0.8;
+    max-width: 800px;
+  }
+
+  .accent {
+    color: var(--accent-color);
+  }
+
+  @media (max-width: 920px) {
+    .stats {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 510px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

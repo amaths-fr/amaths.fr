@@ -1,0 +1,219 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "./Button.astro";
+import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
+---
+
+<header>
+  <h1>
+    <a href="/#">
+      <img src="/assets/amaths.svg" alt="amaths" />
+    </a>
+  </h1>
+  <div class="right">
+    <menu>
+      <li>
+        <a href="/#method" class="section">
+          Méthode
+        </a>
+      </li>
+      <li>
+        <a href="/#results" class="section">
+          Résultats
+        </a>
+      </li>
+      <li>
+        <a href="/#plans" class="section">
+          Formules
+        </a>
+      </li>
+    </menu>
+    <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
+      <Button size="s" variant="accent">
+        Réserver
+      </Button>
+    </a>
+  </div>
+  <div class="mobile-menu">
+    <div class="menu-trigger" role="button">
+      <Icon name="menu" />
+    </div>
+    <div class="menu-container">
+      <menu>
+        <li>
+          <a href="/#method" class="section">
+            Méthode
+          </a>
+        </li>
+        <li>
+          <a href="/#results" class="section">
+            Résultats
+          </a>
+        </li>
+        <li>
+          <a href="/#plans" class="section">
+            Formules
+          </a>
+        </li>
+      </menu>
+      <div class="mobile-menu-separator"></div>
+      <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
+        <Button size="s" variant="accent">
+          Réserver
+        </Button>
+      </a>
+    </div>
+    <div class="menu-backdrop"></div>
+  </div>
+</header>
+
+<script>
+  const menuContainer = document.querySelector(".menu-container");
+  const menuTrigger = document.querySelector(".menu-trigger");
+  const menuBackdrop = document.querySelector(".menu-backdrop");
+
+  function openMenu() {
+    menuContainer?.classList.add("open");
+  }
+
+  function closeMenu() {
+    menuContainer?.classList.remove("open");
+  }
+
+  menuTrigger?.addEventListener("click", () => {
+    openMenu();
+  });
+  menuBackdrop?.addEventListener("click", () => {
+    closeMenu();
+  });
+  window.addEventListener("scroll", () => {
+    closeMenu();
+  });
+</script>
+
+<style>
+  img {
+    width: 150px;
+  }
+
+  header {
+    color: var(--white-color);
+    position: fixed;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    padding-right: var(--s32);
+    padding-left: var(--s32);
+    height: var(--header-height);
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: color 0.2s ease-in-out;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    background-color: var(--primary-color);
+    border-bottom: 1px solid var(--primary-color-light);
+  }
+
+  .right {
+    display: flex;
+    gap: var(--s32);
+    align-items: center;
+  }
+
+  menu {
+    display: flex;
+    list-style: none;
+    gap: var(--s32);
+    align-items: center;
+    font-weight: var(--weight-medium);
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease-in-out;
+  }
+
+  h1 {
+    color: var(--white-color);
+    margin: 0;
+  }
+
+  .section:hover {
+    color: var(--accent-color);
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 650px) {
+    .right {
+      display: none;
+    }
+
+    .mobile-menu {
+      display: flex;
+      position: relative;
+    }
+
+    .menu-container {
+      position: absolute;
+      top: 0;
+      transform: translate(calc(-100% - var(--s8))) scale(0.7);
+      background-color: var(--primary-color);
+      padding: var(--s24);
+      border-radius: var(--s8);
+      border: 1px solid var(--primary-color-light);
+      font-size: 1.2rem;
+      display: flex;
+      flex-direction: column;
+      gap: var(--s24);
+      transform-origin: top right;
+      opacity: 0;
+      transition: all 0.1s ease-in-out;
+      pointer-events: none;
+      z-index: 100;
+    }
+
+    .menu-container.open {
+      transform: translate(calc(-100% - var(--s8))) scale(1);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .mobile-menu-separator {
+      width: 100%;
+      height: 1px;
+      background-color: var(--primary-color-light);
+    }
+
+    .menu-container.open ~ .menu-backdrop {
+      display: block;
+    }
+
+    .menu-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: none;
+    }
+
+    .menu-trigger {
+      cursor: pointer;
+      font-size: 2rem;
+      line-height: 0;
+    }
+
+    menu {
+      flex-direction: column;
+      gap: var(--s16);
+      padding: 0;
+      margin: 0;
+      align-items: flex-start;
+    }
+  }
+</style>
