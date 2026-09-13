@@ -1,0 +1,37 @@
+name: Deploy landing page in production
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "landing-page/**"
+        
+concurrency:
+  group: production-landing-page
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build & deploy landing page
+    runs-on: ubuntu-latest
+    environment: production-landing-page
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup repository
+        uses: ./.github/actions/setup
+
+      - name: Build landing page
+        working-directory: apps/landing-page
+        run: pnpm build
+
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: apps/landing-page/dist/
+          server-dir: /www/
