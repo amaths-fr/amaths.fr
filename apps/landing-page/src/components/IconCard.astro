@@ -6,12 +6,14 @@ interface Props {
   title: string;
   description: string;
   variant?: "default" | "contrasted";
+  step?: number;
 }
 
-const { icon, title, description, variant = "default" } = Astro.props;
+const { icon, title, description, variant = "default", step } = Astro.props;
 ---
 
 <div class:list={["container", variant]}>
+  {step && <div class="step">{step}</div>}
   <div class:list={["icon", variant]}>
     <Icon name={icon} width="1.5rem" height="1.5rem" />
   </div>
@@ -23,6 +25,7 @@ const { icon, title, description, variant = "default" } = Astro.props;
 
 <style>
   .container {
+    position: relative;
     border: 1px solid var(--elevation-2);
     background-color: var(--elevation-1);
     padding: var(--s32);
@@ -30,6 +33,22 @@ const { icon, title, description, variant = "default" } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--s24);
+  }
+
+  .step {
+    position: absolute;
+    top: calc(-1 * var(--s16));
+    left: calc(-1 * var(--s16));
+    width: var(--s32);
+    height: var(--s32);
+    border-radius: var(--rmax);
+    background-color: var(--primary-color);
+    color: var(--absolute-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.875rem;
+    font-weight: var(--weight-semi-bold);
   }
 
   .container.contrasted {

@@ -1,0 +1,79 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  question: string;
+}
+
+const { question } = Astro.props;
+---
+
+<div class="faq-item" data-faq tabindex="1" role="button">
+  <div class="summary">
+    <span>{question}</span>
+    <Icon name="chevron-down" class="chevron" />
+  </div>
+  <div class="answer-wrapper">
+    <div class="answer">
+      <slot />
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll("[data-faq]").forEach((faq) => {
+    if (!(faq instanceof HTMLDivElement)) return;
+
+    faq.addEventListener("click", () => {
+      const open = faq.dataset.open === "true";
+      const next = !open;
+
+      faq.dataset.open = String(next);
+      faq.setAttribute("aria-expanded", String(next));
+    });
+  });
+</script>
+
+<style>
+  .faq-item {
+    border: 1px solid var(--elevation-2);
+    border-radius: var(--r16);
+    background-color: var(--absolute-white);
+    padding: var(--s24) var(--s32);
+    cursor: pointer;
+  }
+
+  .summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--s16);
+    list-style: none;
+    font-weight: var(--weight-medium);
+    color: var(--primary-color);
+  }
+
+  .chevron {
+    flex: 0 0 auto;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .faq-item[data-open="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .answer {
+    color: var(--primary-color-tern);
+    padding-top: var(--s16);
+  }
+
+  .answer-wrapper {
+    transition: height 0.2s ease-in-out;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .faq-item[data-open="true"] .answer-wrapper {
+    height: auto;
+  }
+</style>

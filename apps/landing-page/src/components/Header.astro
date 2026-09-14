@@ -30,7 +30,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
     </menu>
     <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
       <Button size="s" variant="accent">
-        Réserver
+        Cours d'essai
       </Button>
     </a>
   </div>
@@ -59,7 +59,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
       <div class="mobile-menu-separator"></div>
       <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
         <Button size="s" variant="accent">
-          Réserver
+          Cours d'essai
         </Button>
       </a>
     </div>
@@ -148,7 +148,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
     display: none;
   }
 
-  @media (max-width: 650px) {
+  @media (max-width: 730px) {
     .right {
       display: none;
     }
@@ -175,6 +175,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
       transition: all 0.1s ease-in-out;
       pointer-events: none;
       z-index: 100;
+      min-width: 180px;
     }
 
     .menu-container.open {
