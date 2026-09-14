@@ -30,6 +30,7 @@
   --primary-color-light: #5466b7;
   --primary-color-tern: #555e8a;
   --accent-color: #ebbe36;
+  --accent-color-hovered: rgb(235 190 54 / 0.75);
   --accent-color-tern: #fbf2d7;
   --elevation-1: #f5f6fa;
   --elevation-2: #dbdfec;
