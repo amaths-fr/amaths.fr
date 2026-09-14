@@ -1,6 +1,7 @@
 @import "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap";
 
 :root {
+  interpolate-size: allow-keywords;
   font-family: Open sans, sans-serif;
   font-size: 16px;
   background-color: #fff;
@@ -23,6 +24,7 @@
   --r8: 8px;
   --r16: 16px;
   --r24: 24px;
+  --rfull: 1000px;
   --rmax: 100%;
   --primary-color: #14205c;
   --primary-color-light: #5466b7;

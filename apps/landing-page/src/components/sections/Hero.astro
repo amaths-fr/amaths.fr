@@ -10,17 +10,24 @@ import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
   <Container>
     <div class="callout">
       <Callout variant="primary-translucid">
-        Excellence académique depuis 2020
+        Cours de maths · Excellence académique depuis 2020
       </Callout>
     </div>
     <div class="hero-content">
       <div class="text-cta">
-        <h2>Ma-thématique de soutien à 13€ de l'heure</h2>
+        <h2>
+          Ma-thématique de soutien à <span class="accent">13€</span> de l'heure
+        </h2>
         <p>
-          Un cours de 2 heures par semaine et l'accès à un stage d'une trentaine
-          d'heures lors des périodes de vacances scolaires. Distanciel ou
-          Présentiel sur Nantes.
+          2h de cours de maths · 36h de stage · suivi personnalisé — une seule
+          formule.
         </p>
+        <div class="levels">
+          <Callout variant="primary-translucid">Seconde</Callout>
+          <Callout variant="primary-translucid">Première</Callout>
+          <Callout variant="primary-translucid">Terminale</Callout>
+          <Callout variant="primary-translucid">Classes préparatoires</Callout>
+        </div>
         <div class="cta">
           <a href={AIRTABLE_FORM_BASE_URL} target="_blank">
             <Button size="m" variant="accent" icon="arrow-right">
@@ -39,9 +46,9 @@ import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
       </div>
     </div>
     <div class="stats">
-      <Stat size="l" value="+4.6" label="points de moyenne" />
-      <Stat size="l" value="4 élèves" label="maximum par groupe" />
-      <Stat size="l" value="13€" label="de l'heure en moyenne" />
+      <Stat size="l" value="+4.6" label="points en maths" />
+      <Stat size="l" value="4 élèves" label="par groupe de maths" />
+      <Stat size="l" value="13€" label="de l'heure de maths" />
     </div>
   </Container>
 </section>
@@ -58,9 +65,19 @@ import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
     font-size: 3rem;
   }
 
+  h2 .accent {
+    color: var(--accent-color);
+  }
+
   p {
     font-size: 1.1rem;
     opacity: 0.8;
+  }
+
+  .levels {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s8);
   }
 
   .hero-content {
@@ -98,6 +115,11 @@ import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
   .cta {
     display: flex;
     gap: var(--s16);
+  }
+
+  .hint {
+    font-size: 0.875rem;
+    opacity: 0.6;
   }
 
   .stats {

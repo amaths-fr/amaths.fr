@@ -4,11 +4,15 @@ import SectionHead from "../SectionHead.astro";
 import Callout from "../Callout.astro";
 import Stat from "../Stat.astro";
 import TestimonyCard from "../TestimonyCard.astro";
+import Button from "../Button.astro";
+
+const levels = ["Tous", "Seconde", "Première", "Terminale", "Prépa"] as const;
 
 const testimonies = [
   {
     name: "Hugues Dor",
     grade: "Prépa ECG (2ᵉ année)",
+    level: "Prépa",
     image: "/assets/hugues-dor.jpeg",
     video: "https://www.youtube.com/embed/2neoOQ-XlPc?rel=0",
     before: "9.0",
@@ -18,15 +22,18 @@ const testimonies = [
   {
     name: "Jonas Grelet",
     grade: "Prépa ECG (2ᵉ année)",
+    level: "Prépa",
     image: "/assets/jonas-grelet.png",
     video: "https://www.youtube.com/embed/WyiZlfNeijM?rel=0",
     before: "8.0",
     after: "15.0",
-    quote: "Il m'a expliqué et en 30 secondes j'ai compris alors que mon prof a pris 2 heures et je n'y suis pas arrivé.",
+    quote:
+      "Il m'a expliqué et en 30 secondes j'ai compris alors que mon prof a pris 2 heures et je n'y suis pas arrivé.",
   },
   {
     name: "Guilhem Mouiller",
     grade: "Prépa ECG (2ᵉ année)",
+    level: "Prépa",
     image: "/assets/guilhem-mouiller.png",
     video: "https://www.youtube.com/embed/L18TafDBvSA?rel=0",
     before: "3.0",
@@ -36,6 +43,7 @@ const testimonies = [
   {
     name: "Clotilde Montin",
     grade: "Prépa ECG (2ᵉ année)",
+    level: "Prépa",
     image: "/assets/clotilde-montin.png",
     video: "https://www.youtube.com/embed/VTqeRRtrPK4?rel=0",
     before: "9.0",
@@ -51,16 +59,88 @@ const testimonies = [
       <div class="center">
         <Callout variant="accent-translucid">Résultats prouvés</Callout>
       </div>
-      <h2>Nos élèves progressent <span class="light">vraiment</span></h2>
+      <h2>
+        Ils témoignent de leur <span class="light">progression</span>
+      </h2>
+      <p>
+        Découvre les parcours inspirants de nos élèves qui ont transformé leurs
+        résultats en mathématiques
+      </p>
       <div class="center">
         <Stat size="l" icon="stonks" value="+4.6" label="points de moyenne" />
       </div>
     </SectionHead>
+    <div class="tabs">
+      {levels.map((level) => (
+        <button
+          type="button"
+          class:list={["tab", { active: level === "Tous" }]}
+          data-level={level}
+        >
+          {level}
+        </button>
+      ))}
+    </div>
     <div class="testimonies">
-      {testimonies.map((testimony) => <TestimonyCard {...testimony} />)}
+      {testimonies.map((testimony) => (
+        <div class="testimony" data-level={testimony.level}>
+          <TestimonyCard {...testimony} />
+        </div>
+      ))}
+    </div>
+    <div class="empty">
+      Les témoignages pour ce niveau arrivent prochainement. <br /> Consulte les
+      autres témoignages en attendant
+      <Button size="s" class="all-levels-fallback-button" variant="tag">
+        Voir tous les témoignages
+      </Button>
     </div>
   </Container>
 </section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>("#results .tab");
+  const testimonies = document.querySelectorAll<HTMLElement>(
+    "#results .testimony",
+  );
+  const empty = document.querySelector<HTMLElement>("#results .empty");
+  const allLevelTab = document.querySelector<HTMLButtonElement>(
+    '[data-level="Tous"]',
+  );
+  const allLevelFallbackButton = document.querySelector<HTMLButtonElement>(
+    ".all-levels-fallback-button",
+  );
+
+  allLevelFallbackButton?.addEventListener("click", () => {
+    if (!allLevelTab) {
+      return;
+    }
+
+    enableLevel(allLevelTab);
+  });
+
+  function enableLevel(tab: HTMLButtonElement) {
+    tabs.forEach((t) => t.classList.remove("active"));
+    tab.classList.add("active");
+
+    const level = tab.dataset.level;
+    let visibleCount = 0;
+
+    testimonies.forEach((testimony) => {
+      const matches = level === "Tous" || testimony.dataset.level === level;
+      testimony.hidden = !matches;
+      if (matches) visibleCount += 1;
+    });
+
+    if (empty) empty.style.display = visibleCount > 0 ? "none" : "flex";
+  }
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      enableLevel(tab);
+    });
+  });
+</script>
 
 <style>
   .center {
@@ -72,11 +152,56 @@ const testimonies = [
     color: var(--primary-color-light);
   }
 
+  p {
+    font-size: 1.2rem;
+    color: var(--primary-color-tern);
+  }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--s8);
+    padding-top: var(--s32);
+  }
+
+  .tab {
+    font-family:
+      Open Sans,
+      sans-serif;
+    font-size: 0.9rem;
+    font-weight: var(--weight-medium);
+    padding: var(--s8) var(--s16);
+    border-radius: var(--r24);
+    border: 1px solid var(--elevation-2);
+    background-color: var(--absolute-white);
+    color: var(--primary-color-tern);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .tab.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--absolute-white);
+  }
+
   .testimonies {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--s32);
     padding-top: var(--s32);
+  }
+
+  .empty {
+    text-align: center;
+    color: var(--primary-color-tern);
+    padding-top: var(--s32);
+    justify-content: center;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+    gap: var(--s24);
   }
 
   @media (max-width: 800px) {

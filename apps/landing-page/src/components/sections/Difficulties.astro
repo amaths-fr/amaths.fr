@@ -7,32 +7,32 @@ import IconCard from "../IconCard.astro";
 <section id="difficulties">
   <Container>
     <SectionHead>
-      <h3>Vos difficultés</h3>
-      <p>
-        La plupart des élèves en difficulté en mathématiques ne manquent pas d'intelligence, mais d'une méthode
-        structurée et d'un accompagnement régulier.
+      <h3>Tes difficultés en maths :</h3>
+      <p class="quote">
+        « Les élèves qui ont des difficultés en mathématiques ne manquent pas d'intelligence, mais d'une méthode
+        structurée et d'un accompagnement régulier. »
       </p>
     </SectionHead>
     <div class="cards">
       <IconCard
         icon="brain"
-        title="Manque de méthode"
-        description="Vos enfants accumulent les formules sans comprendre la logique profonde. Résultat : blocage total face à un exercice nouveau."
+        title="Manque de méthode en maths"
+        description="Ton enfant accumule les formules mathématiques sans comprendre la logique profonde. Résultat : blocage total face à un exercice nouveau."
       />
       <IconCard
         icon="downfall"
         title="Perte de confiance"
-        description="Chaque contrôle renforce le sentiment d'incompétence. La spirale négative s'installe et les maths deviennent une source d'angoisse."
+        description="Chaque contrôle de maths renforce le sentiment d'incompétence. La spirale négative s'installe et les mathématiques deviennent une source d'angoisse."
       />
       <IconCard
         icon="clock"
         title="Travail irrégulier"
-        description="Sans structure claire et suivi régulier, le travail personnel est inefficace. Les lacunes s'accumulent et deviennent insurmontables."
+        description="Sans structure claire et suivi régulier, le travail personnel en maths est inefficace. Les lacunes s'accumulent et deviennent insurmontables."
       />
       <IconCard
         icon="warn"
-        title="Pression des examens"
-        description="Bac, concours post-prépa : les échéances arrivent vite. Sans préparation rigoureuse, le stress paralyse la performance."
+        title="Pression des examens de maths"
+        description="Bac, concours post-prépa : les épreuves de mathématiques arrivent vite. Sans préparation rigoureuse, le stress paralyse la performance."
       />
     </div>
   </Container>
@@ -42,6 +42,10 @@ import IconCard from "../IconCard.astro";
   p {
     font-size: 1.2rem;
     color: var(--primary-color-tern);
+  }
+
+  .quote {
+    font-style: italic;
   }
 
   .intro-wrapper {

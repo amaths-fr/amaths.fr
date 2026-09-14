@@ -71,12 +71,18 @@ importers:
 
   apps/landing-page:
     dependencies:
+      '@splidejs/splide':
+        specifier: ^4.1.4
+        version: 4.1.4
       astro:
         specifier: ^7.3.2
         version: 7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.2)
       astro-icon:
         specifier: ^1.2.0
         version: 1.2.0
+      astro-splide:
+        specifier: ^2.1.1
+        version: 2.1.1
     devDependencies:
       typescript:
         specifier: ^6.0.3
@@ -1207,6 +1213,9 @@ packages:
   '@sinonjs/fake-timers@15.4.0':
     resolution: {integrity: sha512-DsG+8/LscQIQg68J6Ef3dv10u6nVyetYn923s3/sus5eaGfTo1of5WMZSLf0UJc9KDuKPilPH0UDJCjvNbDNCA==}
 
+  '@splidejs/splide@4.1.4':
+    resolution: {integrity: sha512-5I30evTJcAJQXt6vJ26g2xEkG+l1nXcpEw4xpKh0/FWQ8ozmAeTbtniVtVmz2sH1Es3vgfC4SS8B2X4o5JMptA==}
+
   '@swc/core-darwin-arm64@1.16.2':
     resolution: {integrity: sha512-i/j0HNbnn79qnTVPicvay92Nark8fW8NQqn1e2mGERjUXNpBV0+SwQxlRpk2zBhn6laJ8PDI6Kn1nHZhnz3LCA==}
     engines: {node: '>=10'}
@@ -1665,6 +1674,9 @@ packages:
   astro-icon@1.2.0:
     resolution: {integrity: sha512-0848V2WZuTPhqGSqLeZimLJZ5wmamMtWYzvA2kvg8s2DrUPZ3/nrTcHJWN0eJHt62jy7uvNxgTNiUJGIr7JNxg==}
     engines: {node: '>=22.12.0'}
+
+  astro-splide@2.1.1:
+    resolution: {integrity: sha512-xUOR2vee0J61Ur7ZwtcyY5uzzic18gXVuZImvNuQFeLqyoZoEHPnRDp/8SKKBz6eOg/S715DRG2B6EsbidA3YA==}
 
   astro@7.3.2:
     resolution: {integrity: sha512-ysTcdpGP61XZpHoMRYC/CK19DQ94qkBvzXMtXEo0gEqPNkmOU/Tv++CtWmzaI4nF2Ck8RXFdiWvdlTWa2oOr9w==}
@@ -4945,6 +4957,8 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
+  '@splidejs/splide@4.1.4': {}
+
   '@swc/core-darwin-arm64@1.16.2':
     optional: true
 
@@ -5379,6 +5393,10 @@ snapshots:
       '@iconify/tools': 5.0.14
       '@iconify/types': 2.0.0
       '@iconify/utils': 3.1.7
+
+  astro-splide@2.1.1:
+    dependencies:
+      '@splidejs/splide': 4.1.4
 
   astro@7.3.2(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.20.2):
     dependencies:

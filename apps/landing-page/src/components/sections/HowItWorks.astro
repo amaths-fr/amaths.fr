@@ -1,0 +1,58 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import IconCard from "../IconCard.astro";
+---
+
+<section id="how-it-works">
+  <Container>
+    <SectionHead>
+      <h3>Comment ça marche</h3>
+      <p>
+        De la réservation aux résultats en maths, tout est pensé pour que tu progresses en mathématiques sans te
+        disperser.
+      </p>
+    </SectionHead>
+    <div class="cards">
+      <IconCard
+        step={1}
+        icon="calendar"
+        title="Réserve ton cours de maths d'essai"
+        description="Choisis un créneau en ligne en moins de 2 minutes. 1 heure à 10€, déduits du premier mois si tu t'engages. Aucun engagement requis."
+      />
+      <IconCard
+        step={2}
+        icon="user-group"
+        title="Tu intègres un groupe de maths de niveau"
+        description="4 élèves maximum par groupe, sélectionnés selon leur niveau en maths pour avancer ensemble au même rythme."
+      />
+      <IconCard
+        step={3}
+        icon="book"
+        title="Cours de maths hebdomadaire de 2h + suivi"
+        description="Chaque séance de mathématiques est structurée, enregistrée et accessible sur ton espace personnel avec compte-rendu aux parents."
+      />
+      <IconCard
+        step={4}
+        icon="target"
+        title="Stages de maths intensifs pendant les vacances"
+        description="30 heures de révisions de mathématiques approfondies à chaque période de vacances scolaires, inclus dans ta formule."
+      />
+    </div>
+  </Container>
+</section>
+
+<style>
+  p {
+    font-size: 1.2rem;
+    color: var(--primary-color-tern);
+  }
+
+  .cards {
+    padding-top: var(--s64);
+    margin-top: var(--s16);
+    display: grid;
+    grid-template-columns: var(--grid-opti-4);
+    grid-gap: var(--s32);
+  }
+</style>

@@ -1,0 +1,152 @@
+---
+import Container from "../Container.astro";
+import Callout from "../Callout.astro";
+import Stat from "../Stat.astro";
+import FeatureRow from "../FeatureRow.astro";
+---
+
+<section id="student-space">
+  <Container>
+    <div class="layout">
+      <div class="dashboard">
+        <h4>Tableau de bord</h4>
+        <p class="subtitle">Ton évolution en chiffres :</p>
+        <div class="stats">
+          <Stat size="m" value="12.5/20" label="Avant Amaths" />
+          <Stat size="m" value="18.5/20" label="Moyenne actuelle" />
+          <div class="progress-box">
+            <div class="progress-value">+6 <span>points</span></div>
+            <div class="progress-tag">+48% d'amélioration</div>
+          </div>
+        </div>
+      </div>
+      <div class="content">
+        <div class="callout">
+          <Callout variant="accent-translucid">Espace élève inclus</Callout>
+        </div>
+        <h2>Un suivi complet, <span class="light">pas juste des cours</span></h2>
+        <p class="intro">
+          Chaque élève dispose d'un espace personnel qui centralise sa progression, ses cours et ses ressources —
+          pour avancer sans rien perdre.
+        </p>
+        <div class="features">
+          <FeatureRow
+            icon="stonks"
+            title="Progression suivie en temps réel"
+            description="Moyenne avant/après, courbe de progression, objectifs — tout est visible d'un coup d'œil."
+          />
+          <FeatureRow
+            icon="video"
+            title="Replays de tous les cours"
+            description="Chaque séance est enregistrée et accessible à vie dans l'espace personnel de l'élève."
+          />
+          <FeatureRow
+            icon="mail"
+            title="Compte-rendu envoyé aux parents"
+            description="Après chaque cours, un bilan clair est envoyé par email : points travaillés, axes d'amélioration."
+          />
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s64);
+    align-items: center;
+  }
+
+  .dashboard {
+    border: 1px solid var(--elevation-2);
+    border-radius: var(--r16);
+    background-color: var(--absolute-white);
+    padding: var(--s32);
+    box-shadow: 0 8px 32px rgba(20, 32, 92, 0.08);
+  }
+
+  .subtitle {
+    color: var(--primary-color-tern);
+    padding-top: var(--s8);
+  }
+
+  .stats {
+    padding-top: var(--s32);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--s16);
+  }
+
+  .progress-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--s8);
+    padding: var(--s16);
+    border-radius: var(--r16);
+    background-color: #16a34a1a;
+    color: #16a34a;
+  }
+
+  .progress-value {
+    font-family: Open Sans, sans-serif;
+    font-weight: var(--weight-bold);
+    font-size: 1.75rem;
+  }
+
+  .progress-value span {
+    font-size: 1rem;
+    font-weight: var(--weight-medium);
+  }
+
+  .progress-tag {
+    font-size: 0.75rem;
+    font-weight: var(--weight-medium);
+  }
+
+  .callout {
+    width: fit-content;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s16);
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  .light {
+    color: var(--primary-color-light);
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: var(--primary-color-tern);
+  }
+
+  .features {
+    padding-top: var(--s16);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s16);
+  }
+
+  @media (max-width: 950px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: var(--s48);
+    }
+  }
+
+  @media (max-width: 450px) {
+    .stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
