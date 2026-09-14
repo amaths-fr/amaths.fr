@@ -6,31 +6,50 @@ interface Props {
   title: string;
   subtitle: string;
   price: string;
+  priceSuffix?: string;
   advantages: string[];
   ctaHref: string;
+  ctaLabel?: string;
+  featured?: boolean;
 }
 
-const { title, subtitle, price, advantages, ctaHref } = Astro.props;
+const {
+  title,
+  subtitle,
+  price,
+  priceSuffix = "TTC/mois",
+  advantages,
+  ctaHref,
+  ctaLabel = "Réserver",
+  featured = false,
+} = Astro.props;
 ---
 
-<div class="container">
+<div class:list={["container", { featured }]}>
+  {featured && (
+    <div class="badge">
+      <Icon name="stars" /> Le plus choisi
+    </div>
+  )}
   <div class="header">
     <h4>{title}</h4>
     <p>{subtitle}</p>
   </div>
-  <div class="price">{price}€<span class="ht"> TTC/mois</span></div>
+  <div class="price">
+    {price}€<span class="ht"> {priceSuffix}</span>
+  </div>
   <div class="advantages">
-    {
-      advantages.map((advantage) => (
-        <div class="advantage">
-          <Icon name="check" />
-          <p>{advantage}</p>
-        </div>
-      ))
-    }
+    {advantages.map((advantage) => (
+      <div class="advantage">
+        <Icon name="check" />
+        <p>{advantage}</p>
+      </div>
+    ))}
   </div>
   <a href={ctaHref} target="_blank">
-    <Button size="m" variant="primary">Cours d'essai</Button>
+    <Button size="m" variant={featured ? "accent" : "primary"}>
+      {ctaLabel}
+    </Button>
   </a>
 </div>
 
@@ -38,6 +57,28 @@ const { title, subtitle, price, advantages, ctaHref } = Astro.props;
   .price {
     font-weight: var(--weight-black);
     font-size: 3rem;
+  }
+
+  .container.featured {
+    border-color: var(--accent-color);
+    transform: scale(1.03);
+  }
+
+  .badge {
+    position: absolute;
+    top: calc(-1 * var(--s16));
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-color);
+    color: var(--primary-color);
+    font-size: 0.8rem;
+    font-weight: var(--weight-medium);
+    padding: var(--s8) var(--s16);
+    border-radius: var(--r24);
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: var(--s4);
   }
 
   .ht {
@@ -53,6 +94,7 @@ const { title, subtitle, price, advantages, ctaHref } = Astro.props;
   }
 
   .container {
+    position: relative;
     padding: var(--s32);
     background: var(--absolute-white);
     border: 2px solid var(--elevation-2);
@@ -64,9 +106,9 @@ const { title, subtitle, price, advantages, ctaHref } = Astro.props;
     justify-content: space-between;
   }
 
-  .container:hover {
+  .container:hover:not(.featured) {
     border: 2px solid var(--primary-color);
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   h4 {

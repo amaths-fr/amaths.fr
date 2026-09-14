@@ -4,7 +4,12 @@ import SectionHead from "../SectionHead.astro";
 import PricingCard from "../PricingCard.astro";
 import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
 
-const commonAdvantages = ["2h de cours par semaine", "Groupe de niveau", "Accès fiches et exercices", "Stage vacances de 30h"];
+const commonAdvantages = [
+  "2h de cours par semaine",
+  "Groupe de niveau",
+  "Accès fiches et exercices",
+  "Stage vacances de 30h",
+];
 
 const plans = [
   {
@@ -20,6 +25,7 @@ const plans = [
     price: "222",
     advantages: commonAdvantages,
     ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Terminale`,
+    featured: true,
   },
   {
     title: "Terminale",
@@ -32,30 +38,57 @@ const plans = [
     title: "Prépa 1",
     subtitle: "MPSI / PCSI / PTSI",
     price: "288",
-    advantages: [...commonAdvantages, "Corrections personnalisées", "Colles individuelles"],
+    advantages: [
+      ...commonAdvantages,
+      "Corrections personnalisées",
+      "Colles individuelles",
+    ],
     ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+1%C3%A8re+ann%C3%A9e+%28MPSI%2C+PCSI%2C+ECG...%29`,
   },
   {
     title: "Prépa 2",
     subtitle: "MP / PC / PSI",
     price: "258",
-    advantages: [...commonAdvantages, "Annales écoles ciblées", "Colles individuelles"],
+    advantages: [
+      ...commonAdvantages,
+      "Annales écoles ciblées",
+      "Colles individuelles",
+    ],
     ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+2%C3%A8me+ann%C3%A9e+%28MP%2C+PC%2C+PSI%2C+ECG...%29`,
   },
-]
+  {
+    title: "Stage Vacances",
+    subtitle: "Participation ponctuelle au stage intensif",
+    price: "170",
+    priceSuffix: "les 4 jours",
+    advantages: [
+      "4 jours consécutifs de maths",
+      "Groupe de niveau (4 élèves max)",
+      "Accès fiches et exercices",
+      "Pendant les vacances scolaires",
+    ],
+    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Formule=Stage+vacances`,
+  },
+];
 ---
 
 <section id="plans">
   <Container>
     <SectionHead>
-      <h2>Des formules adaptées <span class="light">à chaque niveau</span></h2>
+      <h2>
+        Des formules adaptées <span class="light">à chaque niveau</span>
+      </h2>
       <p>
-        Engagement sans durée minimum. Résiliable à tout moment. <br />Premier cours d'essai gratuit et sans
-        engagement.
+        Engagement sans durée minimum. Résiliable à tout moment. <br />
+        Cours d'essai à 10€ · 1 heure · déduit du premier mois si tu t'engages.
+        Une carte bancaire est demandée à la réservation, débitée uniquement en
+        cas d'absence non annulée.
       </p>
     </SectionHead>
     <div class="plans">
-      {plans.map((plan) => <PricingCard {...plan} />)}
+      {plans.map((plan) => (
+        <PricingCard {...plan} />
+      ))}
     </div>
   </Container>
 </section>

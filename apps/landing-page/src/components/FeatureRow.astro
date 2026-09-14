@@ -1,0 +1,58 @@
+---
+import { Icon } from "astro-icon/components";
+
+interface Props {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const { icon, title, description } = Astro.props;
+---
+
+<div class="row">
+  <div class="icon">
+    <Icon name={icon} width="1.25rem" height="1.25rem" />
+  </div>
+  <div class="text">
+    <h4>{title}</h4>
+    <p>{description}</p>
+  </div>
+</div>
+
+<style>
+  .row {
+    display: flex;
+    gap: var(--s16);
+    padding: var(--s24);
+    border: 1px solid var(--elevation-2);
+    border-radius: var(--r16);
+    background-color: var(--elevation-1);
+  }
+
+  .icon {
+    flex: 0 0 auto;
+    width: var(--s32);
+    height: var(--s32);
+    border-radius: var(--r8);
+    background-color: #ebbe3633;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s8);
+  }
+
+  h4 {
+    font-size: 1.125rem;
+  }
+
+  p {
+    color: var(--primary-color-tern);
+  }
+</style>

@@ -1,0 +1,66 @@
+---
+import Container from "../Container.astro";
+import SectionHead from "../SectionHead.astro";
+import FaqItem from "../FaqItem.astro";
+---
+
+<section id="faq">
+  <Container>
+    <SectionHead>
+      <h3>Questions fréquentes</h3>
+      <p>Tout ce que tu dois savoir avant de commencer les cours de maths.</p>
+    </SectionHead>
+    <div class="items-container">
+      <div class="items">
+        <FaqItem question="Combien de temps dure l'engagement ?">
+          Aucune durée minimum : nos formules sont sans engagement et
+          résiliables à tout moment, sauf pour les formules Prépa qui sont
+          souscrites à l'année.
+        </FaqItem>
+        <FaqItem question="Que se passe-t-il si mon enfant rate une séance de maths ?">
+          Chaque séance est enregistrée et disponible en replay sur l'espace
+          personnel de l'élève. Une carte bancaire est demandée à la
+          réservation, mais elle n'est débitée qu'en cas d'absence non annulée.
+        </FaqItem>
+        <FaqItem question="Le stage de maths pendant les vacances est-il inclus ?">
+          Oui, chaque formule Seconde, Première et Terminale inclut un stage de
+          maths de 30 heures pendant les vacances scolaires, pour consolider ou
+          préparer les examens.
+        </FaqItem>
+        <FaqItem question="Comment se passe le cours de maths d'essai ?">
+          Réserve un créneau en ligne en moins de 2 minutes. Le cours d'essai
+          dure 1 heure et coûte 10€, déduits du premier mois si tu t'engages
+          ensuite.
+        </FaqItem>
+        <FaqItem question="Présentiel ou distanciel pour les cours de maths : comment choisir ?">
+          Les cours ont lieu en présentiel à Nantes ou en distanciel partout
+          ailleurs. Les deux formats suivent la même méthode structurée et le
+          même suivi personnalisé.
+        </FaqItem>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<style>
+  p {
+    font-size: 1.2rem;
+    color: var(--primary-color-tern);
+  }
+
+  .items-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .items {
+    padding-top: var(--s48);
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s16);
+  }
+</style>

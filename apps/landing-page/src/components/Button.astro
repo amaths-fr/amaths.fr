@@ -2,8 +2,8 @@
 import { Icon } from "astro-icon/components";
 
 interface Props {
-  size?: "s" | "m" | "l";
-  variant?: "accent" | "secondary" | "primary" | "glassy";
+  size?: "xs" | "s" | "m" | "l";
+  variant?: "accent" | "secondary" | "primary" | "glassy" | "tag";
   icon?: string;
   class?: string;
 }
@@ -12,6 +12,7 @@ const sizeMap = {
   l: 24,
   m: 16,
   s: 8,
+  xs: 6,
 } satisfies Record<NonNullable<Props["size"]>, number>;
 
 const { size = "m", variant = "primary", icon, class: className } = Astro.props;
@@ -51,6 +52,10 @@ const { size = "m", variant = "primary", icon, class: className } = Astro.props;
 
   button:hover .right-icon {
     transform: translate(var(--s8));
+  }
+
+  .xs {
+    font-size: 0.9rem;
   }
 
   .s {
@@ -93,6 +98,13 @@ const { size = "m", variant = "primary", icon, class: className } = Astro.props;
     background-color: #ffffff1a;
     border: 2px solid rgba(255, 255, 255, 0.3);
     color: var(--absolute-white);
+  }
+
+  .tag {
+    background: var(--primary-color);
+    color: var(--absolute-white);
+    font-weight: var(--weight-medium);
+    border-radius: var(--rfull);
   }
 
   .secondary:hover {
