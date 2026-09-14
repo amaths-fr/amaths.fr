@@ -2,6 +2,8 @@
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
+import "vanilla-cookieconsent/dist/cookieconsent.css";
+import "../styles/cookie-consent.css";
 
 interface Props {
   title: string;
@@ -21,27 +23,19 @@ const { title } = Astro.props;
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <title>{title}</title>
-    <!--<script is:inline>-->
-    <!--  !(function (w, d, s, u) {-->
-    <!--    if (w.oaiq) return;-->
-    <!--    var q = function () {-->
-    <!--      q.q.push(arguments);-->
-    <!--    };-->
-    <!--    q.q = [];-->
-    <!--    w.oaiq = q;-->
-    <!--    var j = d.createElement(s);-->
-    <!--    j.async = 1;-->
-    <!--    j.src = u;-->
-    <!--    var f = d.getElementsByTagName(s)[0];-->
-    <!--    f.parentNode.insertBefore(j, f);-->
-    <!--  })(-->
-    <!--    window,-->
-    <!--    document,-->
-    <!--    "script",-->
-    <!--    "https://bzrcdn.openai.com/sdk/oaiq.min.js",-->
-    <!--  );-->
-    <!--  oaiq("init", { pixelId: "NceV8K3BLYzBhgx5kyU5fX", debug: true });-->
-    <!--</script>-->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () {
+        window.dataLayer.push(arguments);
+      };
+      window.gtag("consent", "default", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    </script>
+    <script src="../scripts/consent.ts"></script>
   </head>
   <body>
     <Header />

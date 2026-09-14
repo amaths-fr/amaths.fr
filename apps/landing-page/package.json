@@ -12,7 +12,8 @@
     "@splidejs/splide": "^4.1.4",
     "astro": "^7.3.2",
     "astro-icon": "^1.2.0",
-    "astro-splide": "^2.1.1"
+    "astro-splide": "^2.1.1",
+    "vanilla-cookieconsent": "^3.1.0"
   },
   "devDependencies": {
     "typescript": "^6.0.3"

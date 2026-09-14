@@ -1,0 +1,45 @@
+/* CookieConsent reads these variables from :root. Keep its colors tied to the site palette. */
+:root {
+  --cc-font-family: var(--font-default);
+  --cc-modal-border-radius: var(--r16);
+  --cc-btn-border-radius: var(--r8);
+  --cc-bg: var(--absolute-white);
+  --cc-primary-color: var(--primary-color);
+  --cc-secondary-color: var(--primary-color-tern);
+  --cc-link-color: var(--primary-color-light);
+  --cc-btn-primary-bg: var(--accent-color);
+  --cc-btn-primary-color: var(--primary-color);
+  --cc-btn-primary-border-color: var(--accent-color);
+  --cc-btn-primary-hover-bg: var(--accent-color-hovered);
+  --cc-btn-primary-hover-color: var(--primary-color-tern);
+  --cc-btn-primary-hover-border-color: var(--accent-color-hovered);
+  --cc-btn-secondary-bg: var(--absolute-white);
+  --cc-btn-secondary-color: var(--primary-color);
+  --cc-btn-secondary-border-color: var(--primary-color);
+  --cc-btn-secondary-hover-bg: var(--absolute-white);
+  --cc-btn-secondary-hover-color: var(--primary-color-tern);
+  --cc-btn-secondary-hover-border-color: var(--primary-color-light);
+  --cc-separator-border-color: var(--elevation-2);
+  --cc-toggle-on-bg: var(--primary-color-light);
+  --cc-toggle-off-bg: var(--primary-color-tern);
+  --cc-toggle-readonly-bg: var(--elevation-3);
+  --cc-cookie-category-block-bg: var(--elevation-1);
+  --cc-cookie-category-block-border: var(--elevation-2);
+  --cc-cookie-category-block-hover-bg: var(--elevation-2);
+  --cc-cookie-category-block-hover-border: var(--elevation-2);
+  --cc-cookie-category-expanded-block-hover-bg: var(--elevation-1);
+  --cc-footer-bg: var(--elevation-1);
+  --cc-footer-color: var(--primary-color-tern);
+  --cc-footer-border-color: var(--elevation-2);
+}
+
+#cc-main .cm__title,
+#cc-main .pm__title {
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+}
+
+#cc-main :is(button, a, input):focus-visible {
+  outline: 3px solid var(--accent-color);
+  outline-offset: 3px;
+}

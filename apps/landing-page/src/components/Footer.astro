@@ -67,6 +67,9 @@ import Container from "./Container.astro";
           <a class="basic" href="/cgv">
             CGV
           </a>
+          <a class="basic" type="button" data-cookie-settings>
+            Paramètres des cookies
+          </a>
         </div>
       </div>
     </div>
@@ -131,10 +134,21 @@ import Container from "./Container.astro";
     color: var(--absolute-white);
     opacity: 0.7;
     width: fit-content;
+    cursor: pointer;
   }
 
   a.basic:hover {
     opacity: 1;
+  }
+
+  button.basic {
+    background: none;
+    border: 0;
+    padding: 0;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    text-decoration: underline;
   }
 
   p {
