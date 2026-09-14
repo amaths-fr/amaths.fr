@@ -1,10 +1,6 @@
 name: Deploy landing page in production
 on:
-  push:
-    branches:
-      - master
-    paths:
-      - "landing-page/**"
+  workflow_dispatch: 
         
 concurrency:
   group: production-landing-page
