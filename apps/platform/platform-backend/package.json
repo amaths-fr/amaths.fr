@@ -1,0 +1,27 @@
+{
+  "name": "@amaths/platform-backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "tsx --watch src/server.ts",
+    "lint": "eslint .",
+    "format": "prettier . --check",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@ddd-ts/core": "catalog:",
+    "@ddd-ts/shape": "catalog:",
+    "@hono/node-server": "catalog:",
+    "hono": "catalog:",
+    "mongodb": "catalog:",
+    "nodemon": "^3.1.14",
+    "zod": "catalog:",
+    "@amaths/backend-framework": "workspace:*",
+    "@amaths/sdk": "workspace:*"
+  },
+  "devDependencies": {
+    "@ddd-ts/store-inmemory": "^0.0.36"
+  }
+}
