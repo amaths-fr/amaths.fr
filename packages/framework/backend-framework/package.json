@@ -1,0 +1,28 @@
+{
+  "name": "@amaths/backend-framework",
+  "version": "1.0.0",
+  "license": "ISC",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "format": "prettier . --check",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@ddd-ts/core": "catalog:",
+    "@ddd-ts/shape": "catalog:",
+    "dotenv": "^17.3.1",
+    "hono": "catalog:",
+    "mongodb": "catalog:",
+    "ulid": "^3.0.2",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@ddd-ts/types": "^0.0.35",
+    "@amaths/sdk-toolkit": "workspace:*"
+  }
+}

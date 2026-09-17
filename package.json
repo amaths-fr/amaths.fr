@@ -6,26 +6,24 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "module",
+  "scripts": {
+    "all:typecheck": "pnpm -r --filter @amaths/* typecheck",
+    "all:lint": "pnpm -r --filter @amaths/* lint",
+    "all:format": "pnpm -r --filter @amaths/* format",
+    "all:test": "pnpm -r --filter @amaths/* test"
+  },
   "devDependencies": {
-    "@eslint/compat": "^2.1.1",
-    "@eslint/js": "^10.0.1",
-    "@swc/jest": "^0.2.39",
-    "@types/jest": "^30.0.0",
     "@types/node": "^22.20.2",
-    "@typescript-eslint/parser": "^8.70.0",
-    "eslint": "^10.10.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.6",
     "find-up": "^8.0.0",
     "globals": "^17.12.0",
-    "jest": "^30.5.1",
+    "oxlint": "^1.83.0",
     "prettier": "^3.9.6",
     "prettier-plugin-astro": "^1.0.0",
     "ts-essentials": "^10.2.1",
-    "ts-node": "^10.9.2",
-    "typescript-eslint": "^8.70.0",
+    "tsx": "^4.23.13",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.0",
     "workspace-tools": "^0.42.2"
   }
 }
