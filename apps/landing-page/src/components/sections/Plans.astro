@@ -2,7 +2,6 @@
 import Container from "../Container.astro";
 import SectionHead from "../SectionHead.astro";
 import PricingCard from "../PricingCard.astro";
-import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
 
 const commonAdvantages = [
   "2h de cours par semaine",
@@ -17,14 +16,14 @@ const plans = [
     subtitle: "Bases solides pour le lycée",
     price: "210",
     advantages: commonAdvantages,
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Seconde`,
+    ctaHref: "/try",
   },
   {
     title: "Première",
     subtitle: "Consolider pour la terminale",
     price: "222",
     advantages: commonAdvantages,
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Terminale`,
+    ctaHref: "/try",
     featured: true,
   },
   {
@@ -32,7 +31,7 @@ const plans = [
     subtitle: "Préparation intensive au bac",
     price: "240",
     advantages: commonAdvantages,
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=Terminale`,
+    ctaHref: "/try",
   },
   {
     title: "Prépa 1",
@@ -43,7 +42,7 @@ const plans = [
       "Corrections personnalisées",
       "Colles individuelles",
     ],
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+1%C3%A8re+ann%C3%A9e+%28MPSI%2C+PCSI%2C+ECG...%29`,
+    ctaHref: "/try",
   },
   {
     title: "Prépa 2",
@@ -54,7 +53,7 @@ const plans = [
       "Annales écoles ciblées",
       "Colles individuelles",
     ],
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Niveau+scolaire=CPGE+2%C3%A8me+ann%C3%A9e+%28MP%2C+PC%2C+PSI%2C+ECG...%29`,
+    ctaHref: "/try",
   },
   {
     title: "Stage Vacances",
@@ -67,7 +66,7 @@ const plans = [
       "Accès fiches et exercices",
       "Pendant les vacances scolaires",
     ],
-    ctaHref: `${AIRTABLE_FORM_BASE_URL}?prefill_Formule=Stage+vacances`,
+    ctaHref: "/try",
   },
 ];
 ---

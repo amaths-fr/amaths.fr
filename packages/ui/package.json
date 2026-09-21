@@ -1,0 +1,31 @@
+{
+  "name": "@amaths/ui",
+  "version": "1.0.0",
+  "exports": {
+    ".": "./src/index.ts",
+    "./tokens.stylex": "./src/tokens.stylex.ts",
+    "./stylex": "./src/stylex.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint",
+    "format": "prettier . --check"
+  },
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "@radix-ui/react-radio-group": "^1.4.7",
+    "@radix-ui/react-select": "^2.3.7",
+    "@stylexjs/stylex": "^0.19.1",
+    "libphonenumber-js": "^1.13.13"
+  },
+  "peerDependencies": {
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^6.0.3"
+  }
+}

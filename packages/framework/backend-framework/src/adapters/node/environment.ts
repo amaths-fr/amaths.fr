@@ -1,10 +1,4 @@
-import { findUpSync } from "find-up";
-import { config } from "dotenv";
-
-config({
-  path: findUpSync(".env"),
-});
-
+// oxlint-disable-next-line typescript/no-extraneous-class
 export class Environment {
   static get(key: string) {
     const value = process.env[key];

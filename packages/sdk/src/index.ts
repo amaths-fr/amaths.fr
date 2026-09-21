@@ -1,1 +1,3 @@
-export const a: string = "123";
+export * from "./lead";
+
+export { AmathsSDK } from "./sdk";

@@ -1,7 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import Button from "./Button.astro";
-import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
 ---
 
 <header>
@@ -28,7 +27,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
         </a>
       </li>
     </menu>
-    <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
+    <a href="/try" class="title">
       <Button size="s" variant="accent">
         Cours d'essai
       </Button>
@@ -57,7 +56,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../const.ts";
         </li>
       </menu>
       <div class="mobile-menu-separator"></div>
-      <a href={AIRTABLE_FORM_BASE_URL} target="_blank" class="title">
+      <a href="/try" class="title">
         <Button size="s" variant="accent">
           Cours d'essai
         </Button>

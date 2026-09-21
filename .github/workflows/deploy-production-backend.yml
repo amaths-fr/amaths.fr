@@ -1,0 +1,61 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "apps/platform/platform-backend/**"
+      - "packages/sdk/**"
+      - "packages/framework/backend-framework/**"
+      - "packages/framework/sdk-toolkit/**"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/deploy-backend.yml"
+
+concurrency:
+  group: production-backend
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Build and Deploy Backend
+    runs-on: ubuntu-latest
+    environment: production-backend
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup repository
+        uses: ./.github/actions/setup
+
+      - name: Build backend
+        working-directory: apps/platform/platform-backend
+        run: pnpm build
+
+      - name: Upload backend
+        uses: burnett01/rsync-deployments@7.1.0
+        with:
+          switches: -avzr --delete
+          path: apps/backend/dist/
+          remote_path: /home/debian/www/backend
+          remote_host: ${{ secrets.VPS_HOST }}
+          remote_user: debian
+          remote_key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Restart backend
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: debian
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cat > /home/debian/www/.env << 'EOF'
+            NODE_ENV=production
+            PORT=4444
+            AIRTABLE_TOKEN=${{ secrets.AIRTABLE_TOKEN }}
+            LANDING_PAGE_ORIGIN=https://amaths.fr
+            EOF
+            cd /home/debian/www
+            pm2 restart amaths-backend --update-env || pm2 start backend/index.js --env-file=/home/debian/www/.env --name amaths-backend
+            pm2 save

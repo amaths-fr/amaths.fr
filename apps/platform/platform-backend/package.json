@@ -2,26 +2,28 @@
   "name": "@amaths/platform-backend",
   "version": "1.0.0",
   "scripts": {
-    "dev": "tsx --watch src/server.ts",
-    "lint": "eslint .",
+    "build": "tsx src/build/esbuild.ts",
+    "dev": "tsx --watch --env-file=../../../.env src/server.ts",
+    "lint": "oxlint",
     "format": "prettier . --check",
-    "typecheck": "tsc --noEmit",
-    "test": "vitest run"
+    "typecheck": "tsc --noEmit"
   },
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "@amaths/backend-framework": "workspace:*",
+    "@amaths/sdk": "workspace:*",
     "@ddd-ts/core": "catalog:",
     "@ddd-ts/shape": "catalog:",
     "@hono/node-server": "catalog:",
+    "airtable": "^0.12.2",
     "hono": "catalog:",
     "mongodb": "catalog:",
     "nodemon": "^3.1.14",
-    "zod": "catalog:",
-    "@amaths/backend-framework": "workspace:*",
-    "@amaths/sdk": "workspace:*"
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "@ddd-ts/store-inmemory": "^0.0.36"
+    "@ddd-ts/store-inmemory": "^0.0.36",
+    "esbuild": "^0.28.2"
   }
 }
