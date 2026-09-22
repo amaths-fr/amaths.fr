@@ -24,6 +24,30 @@ jobs:
     environment: production-backend
 
     steps:
+      - name: Debug SSH
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
+          VPS_HOST: ${{ secrets.VPS_HOST }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+
+          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          echo "=== Key info ==="
+          ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null \
+            && echo "Private key is valid" \
+            || echo "INVALID PRIVATE KEY"
+
+          echo "=== SSH connection ==="
+          ssh -vvv \
+            -o StrictHostKeyChecking=no \
+            -o UserKnownHostsFile=/dev/null \
+            -i ~/.ssh/id_ed25519 \
+            debian@"$VPS_HOST" \
+            'echo "SSH CONNECTION OK"; whoami; hostname'
+    
       - name: Checkout
         uses: actions/checkout@v4
 
