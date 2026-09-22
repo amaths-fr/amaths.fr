@@ -24,6 +24,8 @@ jobs:
         uses: ./.github/actions/setup
 
       - name: Build landing page
+        env:
+          PUBLIC_API_URL: https://app.amaths.fr/api
         working-directory: apps/landing-page
         run: pnpm build
 
