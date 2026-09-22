@@ -6,7 +6,8 @@ on:
     paths:
       - "apps/landing-page/**"
       - ".github/workflows/deploy-production-landing-page.yml"
-        
+  workflow_dispatch:
+    
 concurrency:
   group: production-landing-page
   cancel-in-progress: true
