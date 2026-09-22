@@ -24,30 +24,6 @@ jobs:
     environment: production-backend
 
     steps:
-      - name: Debug SSH
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.VPS_SSH_KEY }}
-          VPS_HOST: ${{ secrets.VPS_HOST }}
-        run: |
-          mkdir -p ~/.ssh
-          chmod 700 ~/.ssh
-
-          printf '%s\n' "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-
-          echo "=== Key info ==="
-          ssh-keygen -y -f ~/.ssh/id_ed25519 > /dev/null \
-            && echo "Private key is valid" \
-            || echo "INVALID PRIVATE KEY"
-
-          echo "=== SSH connection ==="
-          ssh -vvv \
-            -o StrictHostKeyChecking=no \
-            -o UserKnownHostsFile=/dev/null \
-            -i ~/.ssh/id_ed25519 \
-            debian@"$VPS_HOST" \
-            'echo "SSH CONNECTION OK"; whoami; hostname'
-    
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -62,7 +38,7 @@ jobs:
         uses: burnett01/rsync-deployments@7.1.0
         with:
           switches: -avzr --delete
-          path: apps/backend/dist/
+          path: apps/platform/platform-backend/dist/
           remote_path: /home/debian/www/backend
           remote_host: ${{ secrets.VPS_HOST }}
           remote_user: debian
@@ -82,5 +58,5 @@ jobs:
             LANDING_PAGE_ORIGIN=https://amaths.fr
             EOF
             cd /home/debian/www
-            pm2 restart amaths-backend --update-env || pm2 start backend/index.js --env-file=/home/debian/www/.env --name amaths-backend
+            pm2 restart amaths-backend || pm2 start ecosystem.config.cjs
             pm2 save
