@@ -5,7 +5,7 @@ on:
       - master
     paths:
       - "apps/landing-page/**"
-      - "workflows/deploy-production-landing-page.yml"
+      - ".github/workflows/deploy-production-landing-page.yml"
         
 concurrency:
   group: production-landing-page
