@@ -11,6 +11,7 @@ on:
       - "packages/framework/sdk-toolkit/**"
       - "pnpm-lock.yaml"
       - ".github/workflows/deploy-backend.yml"
+  workflow_dispatch:
 
 concurrency:
   group: production-backend
