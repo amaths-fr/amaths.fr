@@ -3,7 +3,6 @@ import Container from "../Container.astro";
 import Button from "../Button.astro";
 import Callout from "../Callout.astro";
 import Stat from "../Stat.astro";
-import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
 ---
 
 <section id="hero">
@@ -29,7 +28,7 @@ import { AIRTABLE_FORM_BASE_URL } from "../../const.ts";
           <Callout variant="primary-translucid">Classes préparatoires</Callout>
         </div>
         <div class="cta">
-          <a href={AIRTABLE_FORM_BASE_URL} target="_blank">
+          <a href="/try">
             <Button size="m" variant="accent" icon="arrow-right">
               Réserver un cours d'essai
             </Button>

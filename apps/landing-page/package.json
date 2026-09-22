@@ -6,16 +6,33 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "lint": "oxlint",
+    "format": "prettier . --check",
+    "typecheck": "astro check"
   },
   "dependencies": {
+    "@amaths/sdk": "workspace:*",
+    "@amaths/ui": "workspace:*",
+    "@astrojs/check": "^0.9.10",
+    "@astrojs/react": "^6.0.5",
+    "@radix-ui/react-form": "^0.1.16",
     "@splidejs/splide": "^4.1.4",
+    "@stylexjs/stylex": "^0.19.1",
+    "@tanstack/react-form": "^1.33.5",
     "astro": "^7.3.2",
     "astro-icon": "^1.2.0",
     "astro-splide": "^2.1.1",
-    "vanilla-cookieconsent": "^3.1.0"
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "unplugin-stylex": "^0.6.3",
+    "vanilla-cookieconsent": "^3.1.0",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "typescript": "^6.0.3"
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.0.13"
   }
 }

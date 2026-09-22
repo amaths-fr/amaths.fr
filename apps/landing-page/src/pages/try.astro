@@ -1,0 +1,67 @@
+---
+// oxlint-disable-next-line import/no-unassigned-import
+import "../styles/global.css";
+import { LeadFormIsland } from "../components/react/LeadFormIsland";
+import Layout from "../layouts/Layout.astro";
+import Container from "../components/Container.astro";
+---
+
+<Layout title="AMATHS - Essayer">
+  <section>
+    <Container>
+      <div class="wrapper">
+        <div class="form-wrapper">
+          <div class="intro">
+            <h1>Réserver votre cours d'essai gratuit</h1>
+            <p>
+              Cours d'essai déduit du premier mois et sans engagement. Complétez
+              le formulaire ci-dessous.
+            </p>
+          </div>
+          <LeadFormIsland client:load />
+        </div>
+      </div>
+    </Container>
+  </section>
+</Layout>
+
+<style>
+  section {
+    padding-top: var(--header-height);
+    background-color: var(--elevation-1);
+  }
+
+  .intro {
+    width: 100%;
+    padding-top: var(--s32);
+  }
+
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    gap: var(--s24);
+  }
+
+  .form-wrapper {
+    max-width: 720px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s32);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .intro p {
+    padding-top: var(--s16);
+    font-size: 1.125rem;
+    color: var(--primary-color-tern);
+  }
+
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
