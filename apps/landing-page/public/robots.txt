@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://amaths.fr/sitemap-index.xml

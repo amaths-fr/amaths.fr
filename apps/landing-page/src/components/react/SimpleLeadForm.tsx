@@ -392,7 +392,7 @@ export function SimpleLeadForm({
             >
               {isSubmitting || loading
                 ? "Envoi en cours..."
-                : "Réserver mon cours d'essai gratuit"}
+                : "Je veux progresser, j'essaye"}
             </button>
           </Form.Submit>
         )}

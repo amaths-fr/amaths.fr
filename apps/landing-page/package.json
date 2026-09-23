@@ -16,6 +16,7 @@
     "@amaths/ui": "workspace:*",
     "@astrojs/check": "^0.9.10",
     "@astrojs/react": "^6.0.5",
+    "@astrojs/sitemap": "^3.7.4",
     "@radix-ui/react-form": "^0.1.16",
     "@splidejs/splide": "^4.1.4",
     "@stylexjs/stylex": "^0.19.1",

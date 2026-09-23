@@ -3,9 +3,11 @@ import { defineConfig } from "astro/config";
 import icon from "astro-icon";
 import react from "@astrojs/react";
 import styleXPlugin from "unplugin-stylex/astro";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://amaths.fr",
   integrations: [
     icon(),
     react(),
@@ -21,6 +23,7 @@ export default defineConfig({
         },
       },
     }),
+    sitemap(),
   ],
   vite: {
     envDir: "../../",
