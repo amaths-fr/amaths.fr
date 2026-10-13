@@ -4,6 +4,14 @@ const GTM_ID = "GTM-MBLZCQBD";
 const GOOGLE_ADS_ID = "AW-18444170259";
 const OPENAI_PIXEL_ID = "NceV8K3BLYzBhgx5kyU5fX";
 
+type MetaPixel = ((...args: unknown[]) => void) & {
+  callMethod?: (...args: unknown[]) => void;
+  queue: unknown[][];
+  push: MetaPixel;
+  loaded: boolean;
+  version: string;
+};
+
 type ConsentState = "granted" | "denied";
 type GoogleConsent = {
   analytics_storage: ConsentState;
@@ -14,6 +22,8 @@ type GoogleConsent = {
 
 declare global {
   interface Window {
+    fbq?: MetaPixel;
+    _fbq?: MetaPixel;
     dataLayer: unknown[];
     gtag: (...args: unknown[]) => void;
     oaiq?: ((...args: unknown[]) => void) & { q?: unknown[][] };
@@ -23,6 +33,7 @@ declare global {
 let gtmLoaded = false;
 let googleAdsLoaded = false;
 let openaiLoaded = false;
+let metaLoaded = false;
 
 function loadScript(src: string): void {
   const script = document.createElement("script");
@@ -58,6 +69,33 @@ function loadOpenAi(): void {
   loadScript("https://bzrcdn.openai.com/sdk/oaiq.min.js");
 }
 
+function loadMetaPixel(): void {
+  if (metaLoaded) return;
+  metaLoaded = true;
+
+  if (!window.fbq) {
+    const pixel = ((...args: unknown[]) => {
+      if (pixel.callMethod) {
+        pixel.callMethod(...args);
+      } else {
+        pixel.queue.push(args);
+      }
+    }) as MetaPixel;
+    pixel.queue = [];
+    pixel.push = pixel;
+    pixel.loaded = true;
+    pixel.version = "2.0";
+    window.fbq = pixel;
+    // oxlint-disable-next-line no-underscore-dangle -- Meta's standard queue alias.
+    window._fbq ??= pixel;
+
+    loadScript("https://connect.facebook.net/en_US/fbevents.js");
+  }
+
+  window.fbq("consent", "grant");
+  window.fbq("init", "1135123575716330");
+}
+
 function updateGoogleConsent(analytics: boolean, advertising: boolean): void {
   const googleConsent: GoogleConsent = {
     analytics_storage: analytics ? "granted" : "denied",
@@ -76,6 +114,8 @@ function applyConsent(): void {
   if (advertising) {
     loadGoogleAds();
     loadOpenAi();
+    loadMetaPixel();
+    void import("./tracking.ts");
   }
   if (analytics) {
     loadGtm();
@@ -91,7 +131,9 @@ void run({
       autoClear: { cookies: [{ name: /^_ga/ }, { name: "_gid" }] },
     },
     advertising: {
-      autoClear: { cookies: [{ name: /^_gcl_/ }, { name: /^_fbp$/ }] },
+      autoClear: {
+        cookies: [{ name: /^_gcl_/ }, { name: /^_fbp$/ }, { name: /^_fbc$/ }],
+      },
     },
   },
   guiOptions: {
@@ -107,10 +149,11 @@ void run({
     // Do this before applying grants, so a change cannot start a new SDK just
     // before the page reloads.
     if (
-      (!advertising && (openaiLoaded || googleAdsLoaded)) ||
+      (!advertising && (openaiLoaded || googleAdsLoaded || metaLoaded)) ||
       (gtmLoaded && (!analytics || !advertising))
     ) {
       updateGoogleConsent(analytics, advertising);
+      if (!advertising) window.fbq?.("consent", "revoke");
       window.location.reload();
       return;
     }
