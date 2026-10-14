@@ -12,8 +12,6 @@ import {
 import * as stylex from "@stylexjs/stylex";
 import { OpenAiEvents } from "../../lib/openai.ts";
 
-// Submission handling (API call, persistence, navigation, analytics...) is
-// intentionally out of scope here and left to be wired up separately.
 export function LeadFormIsland() {
   const [loading, setLoading] = React.useState(false);
   const [submitted, setSubmitted] = React.useState(false);
@@ -41,12 +39,6 @@ export function LeadFormIsland() {
         <p {...stylex.props(styles.submitTip)}>
           Nous vous contacterons sous 24h pour confirmer votre réservation.
         </p>
-        <button
-          {...stylex.props(styles.again)}
-          onClick={() => setSubmitted(false)}
-        >
-          Renvoyer une réponse
-        </button>
       </div>
     );
   }
